@@ -24,9 +24,12 @@ python -m pip install -e ".[test]"
 python -m pytest
 python -m ontology_clipper.cli "https://example.com/article" --kind auto --dry-run
 python -m ontology_clipper.cli "https://example.com/article" --kind auto --vault "$OBSIDIAN_VAULT_PATH"
+python -m ontology_clipper.movie_cli "The Matrix" --dry-run
+python -m ontology_clipper.movie_cli "The Matrix" --vault "$OBSIDIAN_VAULT_PATH" --watched
 ```
 
 The CLI is intentionally basic. It can fetch a URL or render from saved HTML with `--html-file`, then route the URL to a skill-kind and render Obsidian-compatible Markdown.
+Movie title notes require `OMDB_API_KEY` for live lookup and write to `References/Movies` by default.
 
 ## Skills
 
@@ -36,9 +39,10 @@ The CLI is intentionally basic. It can fetch a URL or render from saved HTML wit
 - `obsidian-clip-youtube`: YouTube video and transcript-oriented notes.
 - `obsidian-clip-books`: Goodreads book references into `References`.
 - `obsidian-clip-movies`: Letterboxd movie references into `References`.
+- `obsidian-create-movie-note`: OMDB movie title lookup into `References/Movies`.
 - `obsidian-clip-places`: Google Maps place references into `References`.
 - `obsidian-clip-events`: Luma event references into `References`.
 - `obsidian-clip-podcasts`: Spotify, YouTube, and Patreon podcast/show/episode notes.
 - `obsidian-clip-wikipedia`: Wikipedia article clipping with corrected page routing.
 
-See [docs/ontology.md](docs/ontology.md) and [docs/template-analysis.md](docs/template-analysis.md).
+See [docs/ontology.md](docs/ontology.md), [docs/template-analysis.md](docs/template-analysis.md), and [docs/movie-title-note.md](docs/movie-title-note.md).
