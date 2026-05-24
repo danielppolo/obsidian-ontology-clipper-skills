@@ -18,6 +18,7 @@ test = ["pytest>=8"]
 [project.scripts]
 ontology-clipper = "ontology_clipper.cli:main"
 ontology-movie-note = "ontology_clipper.movie_cli:main"
+ontology-book-note = "ontology_clipper.book_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "python"}

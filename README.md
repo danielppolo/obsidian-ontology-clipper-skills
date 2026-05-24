@@ -26,10 +26,13 @@ python -m ontology_clipper.cli "https://example.com/article" --kind auto --dry-r
 python -m ontology_clipper.cli "https://example.com/article" --kind auto --vault "$OBSIDIAN_VAULT_PATH"
 python -m ontology_clipper.movie_cli "The Matrix" --dry-run
 python -m ontology_clipper.movie_cli "The Matrix" --vault "$OBSIDIAN_VAULT_PATH" --watched
+python -m ontology_clipper.book_cli "The Left Hand of Darkness" --dry-run
+python -m ontology_clipper.book_cli "The Left Hand of Darkness" --vault "$OBSIDIAN_VAULT_PATH" --read
 ```
 
 The CLI is intentionally basic. It can fetch a URL or render from saved HTML with `--html-file`, then route the URL to a skill-kind and render Obsidian-compatible Markdown.
 Movie title notes require `OMDB_API_KEY` for live lookup and write to `References/Movies` by default.
+Book title notes use Google Books without requiring an API key, can use `GOOGLE_BOOKS_API_KEY` for higher rate limits, and write to `References/Books` by default.
 
 ## Skills
 
@@ -40,9 +43,10 @@ Movie title notes require `OMDB_API_KEY` for live lookup and write to `Reference
 - `obsidian-clip-books`: Goodreads book references into `References`.
 - `obsidian-clip-movies`: Letterboxd movie references into `References`.
 - `obsidian-create-movie-note`: OMDB movie title lookup into `References/Movies`.
+- `obsidian-create-book-note`: Google Books title/query lookup into `References/Books`.
 - `obsidian-clip-places`: Google Maps place references into `References`.
 - `obsidian-clip-events`: Luma event references into `References`.
 - `obsidian-clip-podcasts`: Spotify, YouTube, and Patreon podcast/show/episode notes.
 - `obsidian-clip-wikipedia`: Wikipedia article clipping with corrected page routing.
 
-See [docs/ontology.md](docs/ontology.md), [docs/template-analysis.md](docs/template-analysis.md), and [docs/movie-title-note.md](docs/movie-title-note.md).
+See [docs/ontology.md](docs/ontology.md), [docs/template-analysis.md](docs/template-analysis.md), [docs/movie-title-note.md](docs/movie-title-note.md), and [docs/book-title-note.md](docs/book-title-note.md).
