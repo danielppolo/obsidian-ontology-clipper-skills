@@ -1,12 +1,12 @@
-# Obsidian Ontology Clipper Skills
+# Obsidian Ontology Skills
 
-Reusable Hermes Agent skills for reproducing Obsidian Web Clipper templates through scraping and deterministic note rendering.
+Reusable Hermes Agent skills for ontology-first Obsidian workflows: web clipping, deterministic reference-note creation, and existing people-note management.
 
 The source templates were reviewed from `/Users/Shared/Notes/.obsidian/clipper/*.json`. This repository does not require that vault path at runtime; use `--vault` or `OBSIDIAN_VAULT_PATH` when writing notes.
 
 ## Philosophy
 
-The original clipper templates mostly collect page metadata into Obsidian properties. This repo keeps those output semantics while making the clipping model ontology-first: people, places, organizations, creative works, genres, categories, topics, channels, shows, locations, actors, directors, authors, and event localities should become Obsidian Wikilinks whenever they represent durable entities.
+The original clipper templates mostly collect page metadata into Obsidian properties. This repo keeps those output semantics where relevant while making the broader note model ontology-first: people, places, organizations, creative works, genres, categories, topics, channels, shows, locations, actors, directors, authors, and event localities should become Obsidian Wikilinks whenever they represent durable entities.
 
 Examples:
 
@@ -31,7 +31,7 @@ python -m ontology_clipper.book_cli "The Left Hand of Darkness" --vault "$OBSIDI
 python -m ontology_clipper.people_cli --note "$OBSIDIAN_VAULT_PATH/People/Ada Lovelace.md" --contact-json /tmp/ada-contact.json --dry-run
 ```
 
-The CLI is intentionally basic. It can fetch a URL or render from saved HTML with `--html-file`, then route the URL to a skill-kind and render Obsidian-compatible Markdown.
+The web clipping CLI is intentionally basic. It can fetch a URL or render from saved HTML with `--html-file`, then route the URL to a skill-kind and render Obsidian-compatible Markdown.
 Movie title notes require `OMDB_API_KEY` for live lookup and write to `References/Movies` by default.
 Book title notes use Google Books without requiring an API key, can use `GOOGLE_BOOKS_API_KEY` for higher rate limits, and write to `References/Books` by default.
 People note management updates existing notes only. Google Contacts is the source of truth for person attributes; the helper refuses to create a missing person note.
