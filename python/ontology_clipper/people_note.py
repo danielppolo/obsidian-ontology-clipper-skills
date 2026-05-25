@@ -9,6 +9,7 @@ import re
 from typing import Any, Mapping
 
 from .frontmatter import render_frontmatter
+from .obsidian_policy import merge_note_frontmatter
 from .ontology import normalize_wikilink, tags, wikilink_list
 
 
@@ -266,9 +267,7 @@ def merge_properties(existing: Mapping[str, Any], updates: Mapping[str, Any]) ->
 
 
 def merge_frontmatter(markdown: str, updates: Mapping[str, Any]) -> str:
-    existing, body = parse_frontmatter(markdown)
-    merged = merge_properties(existing, updates)
-    return render_frontmatter(merged) + "\n" + body.lstrip("\n")
+    return merge_note_frontmatter(markdown, updates, skill_name="obsidian-manage-person-note")
 
 
 def timeline_entry(

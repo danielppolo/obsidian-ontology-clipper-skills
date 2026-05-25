@@ -20,3 +20,7 @@ Replicates `goodreads-clipper.json`.
 ## Ontology Rules
 
 Authors are `Person` wikilinks. Genres are `Genre` wikilinks. The note is a `Book`. Default tags are `books` and `to-read`.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

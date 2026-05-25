@@ -9,6 +9,7 @@ from typing import Any
 
 from .frontmatter import render_frontmatter
 from .google_books import BookDetails
+from .obsidian_policy import apply_obsidian_policy
 from .ontology import normalize_wikilink, tags, wikilink_list
 
 
@@ -154,7 +155,11 @@ def render_book_note(
     read: bool = False,
     created_date: str | date | None = None,
 ) -> str:
-    properties = book_properties(details, read=read, created_date=created_date)
+    properties = apply_obsidian_policy(
+        book_properties(details, read=read, created_date=created_date),
+        skill_name="obsidian-create-book-note",
+        today=created_date,
+    )
     frontmatter = render_frontmatter(properties)
     title = properties["title"]
     subtitle = clean_text(details.get("Subtitle"))

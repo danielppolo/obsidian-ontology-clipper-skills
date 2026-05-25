@@ -20,3 +20,7 @@ Replicates `youtube-clipper.json`.
 ## Ontology Rules
 
 Use `[[Youtube channel episodes]]` as the category. Treat channel/author names as `Organization` or creator entities and wikilink them. Keep thumbnail and source URLs as plain text.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

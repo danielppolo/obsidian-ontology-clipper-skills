@@ -20,3 +20,7 @@ Replicates `letterboxd-clipper.json`.
 ## Ontology Rules
 
 Use `[[Movies]]` as category. Directors and cast are `Person` wikilinks. Genres are `Genre` wikilinks. Keep cover URLs plain.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

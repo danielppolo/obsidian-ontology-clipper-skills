@@ -25,3 +25,7 @@ Replicates `spotify-podcast-clipper.json`, `spotify-podcast-episode-clipper.json
 ## Ontology Rules
 
 Prioritize episode routes before generic podcast routes. Shows are `Podcast` wikilinks, authors/hosts are `Person` or `Organization` wikilinks, genres are `Genre` wikilinks, and topics are `Topic` wikilinks.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

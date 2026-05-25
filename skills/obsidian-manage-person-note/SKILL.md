@@ -124,3 +124,7 @@ Rules:
 - [ ] People/places/entities in narrative timeline context are wikilinked.
 - [ ] URLs, email addresses, and phone numbers remain plain.
 - [ ] Timeline entries use `[[YYYY-MM-DD]]` day-note wikilinks.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

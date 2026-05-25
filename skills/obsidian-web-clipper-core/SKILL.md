@@ -23,3 +23,7 @@ python -m ontology_clipper.cli URL --kind auto --vault "$OBSIDIAN_VAULT_PATH" --
 ```
 
 Use `--html-file` for deterministic local tests or saved pages.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

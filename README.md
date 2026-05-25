@@ -38,6 +38,7 @@ People note management updates existing notes only. Google Contacts is the sourc
 
 ## Skills
 
+- `obsidian-ontology-core`: base vault policy, frontmatter normalization, audit metadata, wikilinks, and safe CRUD helpers.
 - `obsidian-web-clipper-core`: shared ontology, wikilink, routing, metadata, and rendering rules.
 - `obsidian-clip-default-article`: default web article clipping into `Clippings`.
 - `obsidian-clip-chatgpt`: shared ChatGPT conversations into `Clippings`.
@@ -52,4 +53,4 @@ People note management updates existing notes only. Google Contacts is the sourc
 - `obsidian-clip-podcasts`: Spotify, YouTube, and Patreon podcast/show/episode notes.
 - `obsidian-clip-wikipedia`: Wikipedia article clipping with corrected page routing.
 
-See [docs/ontology.md](docs/ontology.md), [docs/template-analysis.md](docs/template-analysis.md), [docs/movie-title-note.md](docs/movie-title-note.md), [docs/book-title-note.md](docs/book-title-note.md), and [docs/person-note-management.md](docs/person-note-management.md).
+See [docs/ontology.md](docs/ontology.md), [docs/obsidian-ontology-core.md](docs/obsidian-ontology-core.md), [docs/template-analysis.md](docs/template-analysis.md), [docs/movie-title-note.md](docs/movie-title-note.md), [docs/book-title-note.md](docs/book-title-note.md), and [docs/person-note-management.md](docs/person-note-management.md).

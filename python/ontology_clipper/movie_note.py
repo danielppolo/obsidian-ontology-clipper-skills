@@ -8,6 +8,7 @@ import re
 from typing import Any
 
 from .frontmatter import render_frontmatter
+from .obsidian_policy import apply_obsidian_policy
 from .omdb import MovieDetails
 from .ontology import normalize_wikilink, tags, wikilink_list
 
@@ -162,7 +163,11 @@ def render_movie_note(
     watched: bool = True,
     created_date: str | date | None = None,
 ) -> str:
-    properties = movie_properties(details, watched=watched, created_date=created_date)
+    properties = apply_obsidian_policy(
+        movie_properties(details, watched=watched, created_date=created_date),
+        skill_name="obsidian-create-movie-note",
+        today=created_date,
+    )
     frontmatter = render_frontmatter(properties)
     title = properties["title"]
     year = properties.get("year") or ""

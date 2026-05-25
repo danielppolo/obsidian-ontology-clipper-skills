@@ -22,3 +22,7 @@ The route must include a non-empty page slug after `/wiki/`.
 ## Ontology Rules
 
 Use `[[Clippings]]` as category and `[[Wikipedia]]` as author/source organization. Tag as `clippings` and `wikipedia`.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

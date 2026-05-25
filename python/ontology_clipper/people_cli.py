@@ -6,6 +6,7 @@ import argparse
 from pathlib import Path
 import sys
 
+from .obsidian_policy import OperationPolicy, read_note, write_note
 from .people_note import load_contact_json, timeline_entry, update_existing_person_markdown
 
 
@@ -44,7 +45,7 @@ def main(argv: list[str] | None = None) -> int:
             entities=args.timeline_entities,
         )
 
-    original = note_path.read_text(encoding="utf-8")
+    original = read_note(note_path)
     updated = update_existing_person_markdown(
         original,
         contact=contact,
@@ -54,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.dry_run:
         print(updated, end="")
     else:
-        note_path.write_text(updated, encoding="utf-8")
+        write_note(note_path, updated, OperationPolicy(create=False, update=True))
         print(note_path)
     return 0
 

@@ -9,6 +9,7 @@ import sys
 
 from .book_note import book_filename, render_book_note, unique_note_path
 from .google_books import GoogleBooksError, choose_best_result, get_book_details, search_books
+from .obsidian_policy import OperationPolicy, write_note
 
 
 def _api_key(args: argparse.Namespace) -> str:
@@ -66,17 +67,11 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--vault or OBSIDIAN_VAULT_PATH is required unless --dry-run is used")
     vault = Path(args.vault).expanduser()
     target = unique_note_path(vault, args.folder, filename, overwrite=args.overwrite)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    if args.overwrite:
-        target.write_text(rendered, encoding="utf-8")
-    else:
-        try:
-            with target.open("x", encoding="utf-8") as handle:
-                handle.write(rendered)
-        except FileExistsError:
-            target = unique_note_path(vault, args.folder, filename, overwrite=False)
-            with target.open("x", encoding="utf-8") as handle:
-                handle.write(rendered)
+    write_note(
+        target,
+        rendered,
+        OperationPolicy(create=True, update=args.overwrite, create_parent_dirs=True),
+    )
     print(target)
     return 0
 

@@ -16,3 +16,7 @@ Replicates `default-clipper.json`.
 ## Ontology Rules
 
 Render authors as `Person` wikilinks. Keep `source` as the original URL. Use `clippings` as the default tag.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

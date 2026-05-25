@@ -20,3 +20,7 @@ Replicates `luma-clipper.json`.
 ## Ontology Rules
 
 Use `[[Events]]` as category. Event localities are `Place` wikilinks. The note is an `Event`; named organizers can be `Organization` or `Person` entities when available.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

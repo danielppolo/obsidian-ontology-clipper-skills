@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 
 from .movie_note import movie_filename, render_movie_note, unique_note_path
+from .obsidian_policy import OperationPolicy, write_note
 from .omdb import OMDBError, choose_best_result, get_movie_details, search_movies
 
 
@@ -62,17 +63,11 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--vault or OBSIDIAN_VAULT_PATH is required unless --dry-run is used")
     vault = Path(args.vault).expanduser()
     target = unique_note_path(vault, args.folder, filename, overwrite=args.overwrite)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    if args.overwrite:
-        target.write_text(rendered, encoding="utf-8")
-    else:
-        try:
-            with target.open("x", encoding="utf-8") as handle:
-                handle.write(rendered)
-        except FileExistsError:
-            target = unique_note_path(vault, args.folder, filename, overwrite=False)
-            with target.open("x", encoding="utf-8") as handle:
-                handle.write(rendered)
+    write_note(
+        target,
+        rendered,
+        OperationPolicy(create=True, update=args.overwrite, create_parent_dirs=True),
+    )
     print(target)
     return 0
 

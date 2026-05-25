@@ -20,3 +20,7 @@ Replicates `google-maps-clipper.json`.
 ## Ontology Rules
 
 Use `[[Places]]` as category. Locality fields are `Place` wikilinks. Keep map/source/website URLs as URLs. Coordinates remain text or list-like coordinate properties.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.

@@ -15,6 +15,10 @@ Use this skill when the user gives a movie title and wants an Obsidian movie not
 - Vault path comes from `--vault` or `OBSIDIAN_VAULT_PATH`.
 - Notes default to `References/Movies`; pass `--folder` to override.
 
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.
+
 ## Commands
 
 ```bash

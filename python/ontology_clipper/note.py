@@ -8,7 +8,7 @@ import re
 from typing import Any
 
 from .frontmatter import render_frontmatter
-from .ontology import normalize_property, tags
+from .obsidian_policy import apply_obsidian_policy
 
 
 def slug_title(value: str) -> str:
@@ -24,6 +24,7 @@ class Note:
     body: str = ""
     properties: dict[str, Any] = field(default_factory=dict)
     path: str = "Clippings"
+    skill_name: str = "obsidian-web-clipper-core"
 
     def normalized_properties(self) -> dict[str, Any]:
         props: dict[str, Any] = {
@@ -32,11 +33,7 @@ class Note:
             "created": date.today().isoformat(),
         }
         props.update(self.properties)
-        if "tags" in props:
-            props["tags"] = tags(props["tags"])
-        for key, value in list(props.items()):
-            props[key] = normalize_property(key, value)
-        return props
+        return apply_obsidian_policy(props, skill_name=self.skill_name)
 
     def filename(self) -> str:
         return slug_title(self.title) + ".md"

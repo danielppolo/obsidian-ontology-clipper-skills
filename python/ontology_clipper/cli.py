@@ -10,6 +10,7 @@ from urllib.request import urlopen
 from .markdown import readable_text
 from .metadata import extract_metadata, first_schema
 from .note import Note
+from .obsidian_policy import OperationPolicy, write_note
 from .routing import route_url
 
 
@@ -55,9 +56,8 @@ def main(argv: list[str] | None = None) -> int:
     if not args.vault:
         parser.error("--vault or OBSIDIAN_VAULT_PATH is required unless --dry-run is used")
     target_dir = Path(args.vault) / note.path
-    target_dir.mkdir(parents=True, exist_ok=True)
     target = target_dir / note.filename()
-    target.write_text(rendered, encoding="utf-8")
+    write_note(target, rendered, OperationPolicy(create=True, update=True, create_parent_dirs=True))
     print(target)
     return 0
 

@@ -21,3 +21,7 @@ Replicates `chatgpt-clipper.json`.
 ## Notes
 
 Normalize user/assistant headings where possible. Tag as `chatgpt/conversation`. Treat named human authors as `Person` entities and the note as a `Conversation`.
+
+## Base Policy
+
+Load and follow `obsidian-ontology-core` before writing to the vault. Use its shared CRUD helpers and policy rules for `categories`, `tags`, audit metadata, wikilinks, raw URL preservation, and safe create/update/delete capabilities.
